@@ -19,9 +19,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onIncrement: () => action('INCREMENT'),
-  onDecrement: () => action('DECREMENT'),
-  onIncrementAsync: () => action('INCREMENT_ASYNC'),
+  onIncrement: () => action({ type: 'INCREMENT' }),
+  onDecrement: () => action({ type: 'DECREMENT' }),
+  onIncrementAsync: () => action({ type: 'INCREMENT_ASYNC' }),
 });
 
 export default connect(
