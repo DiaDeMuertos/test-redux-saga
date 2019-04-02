@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import action from './action';
 
 const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) => {
-  console.log('mmm');
   return (
     <div>
       <button onClick={onIncrementAsync}>Increment after 1 second</button>{' '}
