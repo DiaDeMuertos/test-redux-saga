@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import action from './action';
+import Creators from './actionCreator';
 
 const Counter = ({ value, onIncrement, onDecrement, onIncrementAsync }) => {
   return (
@@ -18,10 +19,10 @@ const mapStateToProps = state => ({
   value: state,
 });
 
-const mapDispatchToProps = dispatch => ({
-  onIncrement: () => action({ type: 'INCREMENT' }),
-  onDecrement: () => action({ type: 'DECREMENT' }),
-  onIncrementAsync: () => action({ type: 'INCREMENT_ASYNC' }),
+const mapDispatchToProps = () => ({
+  onIncrement: () => action(Creators.increment()),
+  onDecrement: () => action(Creators.decrement()),
+  onIncrementAsync: () => action(Creators.incrementAsync()),
 });
 
 export default connect(
