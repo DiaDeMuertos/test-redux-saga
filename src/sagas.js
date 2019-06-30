@@ -14,7 +14,7 @@ export function* helloSaga() {
   console.log('Hello Saga!');
 }
 
-export function* incrementAsync(action) {
+export function* incrementAsync() {
   yield call(delay, 1000);
   yield put({ type: 'INCREMENT' });
 }
@@ -36,6 +36,21 @@ function* watchFetchStrategy() {
   yield takeEvery('STRATEGY_REQUESTED', fetchStrategy);
 }
 
+function* ReadUser(action) {
+  console.log('Action Read User:');
+  console.log(action);
+  yield call(delay, 1000);
+}
+
+function* watchReadUser() {
+  yield takeEvery('READ_USER', ReadUser);
+}
+
 export default function* rootSaga() {
-  yield all([watchHelloSaga(), watchIncrementAsync(), watchFetchStrategy()]);
+  yield all([
+    watchHelloSaga(),
+    watchIncrementAsync(),
+    watchFetchStrategy(),
+    watchReadUser(),
+  ]);
 }
