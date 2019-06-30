@@ -6,6 +6,7 @@ const { Creators } = createActions({
   decrement: null,
   incrementAsync: null,
   defaultHandler: null,
+  readUser: ['data'],
 });
 
 export default Creators;
