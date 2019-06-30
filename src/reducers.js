@@ -4,22 +4,33 @@ import Types from './actionTypes';
 
 console.log(Types);
 
-const INITIAL_STATE = Immutable(0);
+const INITIAL_STATE = Immutable({ counter: { value: 0 } });
 
 export const increment = (state = INITIAL_STATE, action) => {
-  return state + 1;
+  const { counter } = state;
+  const { value } = counter;
+  return state.merge({ counter: { value: value + 1 } });
 };
 
 export const incrementIfOdd = (state = INITIAL_STATE, action) => {
-  return state + 1;
+  const { counter } = state;
+  const { value } = counter;
+  return state.merge({ counter: { value: value + 1 } });
 };
 
 export const decrement = (state = INITIAL_STATE, action) => {
-  return state - 1;
+  const { counter } = state;
+  const { value } = counter;
+  return state.merge({ counter: { value: value - 1 } });
 };
 
 export const defaultHandler = (state = INITIAL_STATE, action) => {
-  return state % 2 !== 0 ? state + 1 : state;
+  const { counter } = state;
+  const { value } = counter;
+
+  return value % 2 !== 0
+    ? state.merge({ counter: { value: value + 1 } })
+    : state;
 };
 
 export const HANDLERS = {
